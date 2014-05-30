@@ -6,8 +6,8 @@ class Category(db.Model):
     __tablename__   = 'categories'
 
     id              = db.Column(db.Integer, primary_key = True)
-    name            = db.Column(db.String(150))
-    slug            = db.Column(db.String(150))
+    name            = db.Column(db.String(100))
+    slug            = db.Column(db.String(100))
     post_count      = db.Column(db.Integer, default = 0)
 
     def __init__(self, name, slug, post_count): 
