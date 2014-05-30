@@ -11,6 +11,7 @@ revision = '7c6a28e416c'
 down_revision = None
 
 from alembic import op
+from datetime import datetime
 import sqlalchemy as sa
 
 
@@ -18,9 +19,9 @@ def upgrade():
 
     op.create_table('categories',
         sa.Column('id', sa.Integer, primary_key = True),
-        sa.Column('name', sa.Stringa(100), nullable = False),
+        sa.Column('name', sa.String(100), nullable = False),
         sa.Column('slug', sa.String(100), nullable = False),
-        sa.Column('post_count', DateTime, nullable = False)
+        sa.Column('post_count', sa.DateTime, nullable = False)
     )
 
     op.create_table('comments',
@@ -29,7 +30,7 @@ def upgrade():
         sa.Column('username', sa.String(50), nullable = False),
         sa.Column('mail', sa.String(80), nullable = False),
         sa.Column('content', sa.Unicode(2000), nullable = False),
-        sa.Column('created', DateTime, nullable = False)
+        sa.Column('created', sa.DateTime, nullable = False)
     )
 
     op.create_table('posts',
@@ -39,7 +40,7 @@ def upgrade():
         sa.Column('name', sa.String(300), nullable = False),
         sa.Column('slug', sa.String(300), nullable = False),
         sa.Column('content', sa.Unicode(8000), nullable = False),
-        sa.Column('created', DateTime, nullable = False)
+        sa.Column('created', sa.DateTime, nullable = False)
     )
 
     op.create_table('users',

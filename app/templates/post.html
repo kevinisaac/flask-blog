@@ -1,9 +1,59 @@
-{% extends 'master.html' %}
+<!doctype html>
+<html>
+    <head>
+        <title>Changing Flask's default templates directory</title>
+        <link rel="stylesheet" href="/css/post.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/pure-min.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="/css/rainbowthemes/blackboard.css" type="text/css" media="screen" charset="utf-8">
 
-{% block body %}
+        <script src="/js/rainbow-custom.min.js" charset="utf-8"> </script>
 
-<h1> {{ heading }} </h1>
+    </head>
 
-Body sinks.
+    <body>
 
-{% endblock %}
+        <div id="left">
+
+        </div>
+
+        <div id="right">
+            <div id="content">
+                <div id="post">
+                    <div id="title">
+                        <h1>Changing Flask's default templates directory</h1>
+                    </div>
+                    <div id="metadata">
+                        <span>Posted by : Kevin</span>&nbsp;&nbsp;
+                        <span>Posted at : Wednesday, May 28 2014</span>
+                    </div>
+                    <div id="body">
+                        Assume that you had to move all your Flask application's files and directories to another sub-directory named, let's say app/. In that case, now when you call the 'render_template' method for your route from the gateway file (which is outside your directory), Jinja2 will look for a folder named 'templates' in the current directory. <br />
+                        <br />
+                        That being the case, I managed to change the default 'templates' folder like this :<br />
+                        <br />
+
+<!-- CODE SEGMENT BEGINS -->
+<pre><code data-language="python">
+import jinja2
+
+# ..
+app = Flask(__name__)
+app.jinja_loader = jinja2.FileSystemLoader('app/templates')
+
+# ..
+</code></pre>
+<!-- CODE SEGMENT ENDS -->
+
+
+                        <br />
+                        Now, restart your application and it's done.<br />
+                    </div>
+                </div>
+                <div id="footer">
+                    Source code @ <a href="github.com/kevinpaladin/myblog">Github.com/kevinpaladin/myblog</a>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

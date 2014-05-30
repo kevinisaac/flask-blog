@@ -19,6 +19,8 @@ class Category(db.Model):
     def __repr__(self):
         return '<Category - %s>' % (self.name)
 
+category = Category('a','a',2)
+
 class Comment(db.Model):
 
     __tablename__   = 'comments'
@@ -42,7 +44,7 @@ class Comment(db.Model):
 
 class Post(db.Model):
 
-    __tablename__   = 'categories'
+    __tablename__   = 'posts'
 
     id              = db.Column(db.Integer, primary_key = True)
     category_id     = db.Column(db.Integer)
